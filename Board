@@ -1,40 +1,13 @@
-# create a grid that will store cell values
-grid =[["_", "_", "_"],
+# initialize a board 
+board =[["_", "_", "_"],
          ["_", "_", "_"],
          ["_", "_", "_"]]
 
-# convert the grid of cells into a list
-def grid_to_list(grid):
-    return "".join([cell for row in grid for cell in row ])
-
-    
-# print grid of cells
-def print_grid(grid):
+# print the board
+def print_board(board):
     print('---------')
-    for row in grid:
-        print('| ', end = '')
-        for col in row:
-            print(' '.join(row), end = '')
+    for row in board:
+        print('| ', end='')
+        print(' '.join(row), end='')
         print(' |')
     print('---------')
-
-
-
-    def print_board(self):
-        print('---------')
-        for line in self.board:
-            print('| ', end='')
-            print(' '.join(line), end='')
-            print(' |')
-        print('---------')
-
-def enter_grid(grid):
-    #print("Enter cells:")
-    user_grid = input("Enter cells:")
-    user_list = grid_to_list(user_grid)
-    for i in range(3):
-        grid[0][i] = user_list[i]
-        grid[1][i] = user_list[i + 3]
-        grid[2][i] = user_list[i + 6]
-    return grid
-    
