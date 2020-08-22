@@ -1,3 +1,13 @@
+#
+#
+# _____________________________________________________________________________________________
+# _____________________________________________________________________________________________
+# STAGE 1
+# _____________________________________________________________________________________________
+# _____________________________________________________________________________________________
+#
+#
+
 # initialize an empty board
 board =[["_", "_", "_"],
          ["_", "_", "_"],
@@ -58,9 +68,13 @@ def game_state(board):
     else:
         print("Game not finished")
 
-# run script below to play
-board = set_board(board)
-print_board(board)
-board = update_board(board)
-print_board(board)
-game_state(board)
+# play game
+def play_game():
+    board = set_board(board)
+    print_board(board)
+    board = update_board(board)
+    print_board(board)
+    game_state(board)
+
+# run script
+play_game()
