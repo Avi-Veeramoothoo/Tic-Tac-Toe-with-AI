@@ -1,4 +1,4 @@
-# initialize a board 
+# initialize an empty board 
 board =[["_", "_", "_"],
          ["_", "_", "_"],
          ["_", "_", "_"]]
@@ -11,3 +11,11 @@ def print_board(board):
         print(' '.join(row), end='')
         print(' |')
     print('---------')
+
+# set a new board template with input user provides 
+def set_board(board):
+    user_board = input("Enter cells:")
+    for i in range(3):
+         for j in range(3):
+                  grid[j][i] = user_cells[i + 3 * j]
+    return board
