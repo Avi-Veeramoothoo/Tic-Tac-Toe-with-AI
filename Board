@@ -1,0 +1,29 @@
+# create a grid that will store cell values
+grid =[["_", "_", "_"],
+         ["_", "_", "_"],
+         ["_", "_", "_"]]
+
+# convert the grid of cells into a list
+def grid_to_list(grid):
+    return "".join([cell for row in grid for cell in row ])
+
+def enter_grid(grid):
+    #print("Enter cells:")
+    user_grid = input("Enter cells:")
+    user_list = grid_to_list(user_grid)
+    for i in range(3):
+        grid[0][i] = user_list[i]
+        grid[1][i] = user_list[i + 3]
+        grid[2][i] = user_list[i + 6]
+    return grid
+    
+    
+# print grid of cells
+def print_grid(grid):
+    print(9 * "_")
+    for row in grid:
+        print("|", end = " ")
+        for col in row:
+            print(col, end = " ")
+        print("|")
+    print(9 * "_")
