@@ -17,5 +17,5 @@ def set_board(board):
     user_board = input("Enter cells:")
     for i in range(3):
          for j in range(3):
-                  grid[j][i] = user_cells[i + 3 * j]
+                  board[j][i] = user_board[i + 3 * j]
     return board
