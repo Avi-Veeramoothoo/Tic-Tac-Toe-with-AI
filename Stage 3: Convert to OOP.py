@@ -91,7 +91,7 @@ class Game():
         else:
             return Game.GAME_NOT_FINISHED
 
-
+# modify board with valid user move
     def user_move(self):
         user = input("Enter the coordinates: ").split()
         if (len(user[0]) > 1):
@@ -111,7 +111,8 @@ class Game():
         else:
             self.board[3 - y][x - 1] = "X"
 
-
+            
+# modify board with valid computer move on Easy Mode
     def play_easy(self):
         x = randint(1, 3)
         y = randint(1, 3)
@@ -126,14 +127,14 @@ class Game():
             self.board[3 - y][x - 1] = "X"
         print('Making move level "easy"')
 
-
+# determine next player and initiate move
     def next_move(self, player):
         if player == Game.USER:
             self.user_move()
         else:
             self.play_easy()
 
-
+# play game
     def play(self):
         self.next_player = Game.PLAYER1
         while self.state == Game.GAME_NOT_FINISHED:
@@ -149,7 +150,7 @@ class Game():
                 self.next_player = Game.PLAYER1
         print(self.state, "\n")
 
-
+# game menu to decide user action: start, re-start or exit game
     def menu(self, user_input):
         if self.valid_input(user_input):
             while self.command == Game.START:
