@@ -69,7 +69,7 @@ class Game():
             print("Bad parameters!")
             return False
 
-
+# determine and return game state: win, lose, draw or infinished
     def game_state(self):
         def line_check(board, letter, limit):
             return [(board[i].count(letter) == limit) for i in range(3)]
