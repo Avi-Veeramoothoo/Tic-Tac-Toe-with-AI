@@ -69,6 +69,7 @@ class Game():
             print("Bad parameters!")
             return False
 
+        
 # determine and return game state: win, lose, draw or infinished
     def game_state(self):
         def line_check(board, letter, limit):
@@ -91,6 +92,7 @@ class Game():
         else:
             return Game.GAME_NOT_FINISHED
 
+        
 # modify board with valid user move
     def user_move(self):
         user = input("Enter the coordinates: ").split()
@@ -127,6 +129,7 @@ class Game():
             self.board[3 - y][x - 1] = "X"
         print('Making move level "easy"')
 
+        
 # determine next player and initiate move
     def next_move(self, player):
         if player == Game.USER:
@@ -134,6 +137,7 @@ class Game():
         else:
             self.play_easy()
 
+            
 # play game
     def play(self):
         self.next_player = Game.PLAYER1
@@ -150,6 +154,7 @@ class Game():
                 self.next_player = Game.PLAYER1
         print(self.state, "\n")
 
+        
 # game menu to decide user action: start, re-start or exit game
     def menu(self, user_input):
         if self.valid_input(user_input):
@@ -162,6 +167,7 @@ class Game():
         else:
             self.menu(input())
 
+            
 # run script
 game = Game()
 game.menu(input())
