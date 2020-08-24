@@ -34,17 +34,17 @@ class Game():
         self.state = Game.GAME_NOT_FINISHED
         self.board =[["_", "_", "_"],
                      ["_", "_", "_"],
-                     ["_", "_", "_"]]
+                     ["_", "_", "_"]] # initialize an empty board
 
         
-# clear board
+# clear board template
     def clear_board(self):
         for i in range(3):
             for j in range(3):
                 self.board[j][i] = " "
 
                 
-# print board
+# print the board
     def print_board(self):
         print('---------')
         for row in self.board:
@@ -93,7 +93,7 @@ class Game():
             return Game.GAME_NOT_FINISHED
 
         
-# modify board with valid user move
+# update board template with valid user move
     def user_move(self):
         user = input("Enter the coordinates: ").split()
         if (len(user[0]) > 1):
@@ -114,7 +114,7 @@ class Game():
             self.board[3 - y][x - 1] = "X"
 
             
-# modify board with valid computer move on Easy Mode
+# update board template with valid computer move on Easy Mode
     def play_easy(self):
         x = randint(1, 3)
         y = randint(1, 3)
