@@ -12,7 +12,7 @@
 from random import randint
 
 
-class Game():
+class Game:
     START = "start"
     EXIT = "exit"
     USER = "user"
