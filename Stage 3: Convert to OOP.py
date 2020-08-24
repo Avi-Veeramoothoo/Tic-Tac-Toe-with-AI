@@ -11,6 +11,7 @@
 
 from random import randint
 
+
 class Game():
     START = "start"
     EXIT = "exit"
@@ -24,6 +25,7 @@ class Game():
     GAME_NOT_FINISHED = "Game not finished"
 
 
+# declare instance attributes 
     def __init__(self):
         self.command = None
         self.player1 = None
@@ -34,13 +36,15 @@ class Game():
                      ["_", "_", "_"],
                      ["_", "_", "_"]]
 
-
+        
+# clear board
     def clear_board(self):
         for i in range(3):
             for j in range(3):
                 self.board[j][i] = " "
 
-
+                
+# print board
     def print_board(self):
         print('---------')
         for row in self.board:
@@ -50,7 +54,7 @@ class Game():
         print('---------')
 
 
-
+# determine if user input is valid
     def valid_input(self, args):
         user_input = args.split()
         if (len(user_input) == 1 and user_input[0] == Game.EXIT):
