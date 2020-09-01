@@ -172,13 +172,13 @@ class Game:
         print('Making move level "medium"')
 
 
-    def minimax(self, is_ai_turn, ai_mark, board):
+    def minimax(self, is_ai_turn, active_move, board):
         if self.game_state(board) == Game.DRAW:
             return 0
         elif self.game_state(board) == Game.X_WINS:
-            return 1 if ai_mark == 'X' else -1
+            return 1 if is_ai_turn else -1
         elif self.game_state(board) == Game.O_WINS:
-            return 1 if ai_mark == 'O' else -1
+            return 1 if is_ai_turn else -1
 
         def reverse_mark(ai_mark):
             return "X" if ai_mark == "O" else "O"
@@ -187,8 +187,8 @@ class Game:
         board_list = [cell for row in board for cell in row]
         empty_cells_index = [i for i in range(len(board_list)) if board_list[i] == Game.EMPTY_CELL]
         for index in empty_cells_index:
-            board[index // 3][index % 3] = ai_mark
-            scores.append(self.minimax(not is_ai_turn, reverse_mark(ai_mark), board))
+            board[index // 3][index % 3] = active_move
+            scores.append(self.minimax(not is_ai_turn, reverse_mark(active_move), board))
             board[index // 3][index % 3] = Game.EMPTY_CELL
         return max(scores) if is_ai_turn else min(scores)
 
@@ -206,6 +206,7 @@ class Game:
             if score > best_score:
                 best_score = score
                 best_index = index
+        print('Making move level "hard"')
         self.board[best_index // 3][best_index % 3] = self.active_move()
 
 
@@ -251,3 +252,4 @@ class Game:
 #run script
 game = Game()
 game.menu(input())
+
