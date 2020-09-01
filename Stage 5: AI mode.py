@@ -7,8 +7,6 @@
 # _____________________________________________________________________________________________
 #
 #
-
-
 import math
 from random import randint
 
@@ -241,8 +239,8 @@ class Game:
                 self.clear_board()
                 self.print_board()
                 self.play()
-                user_input = input("Input command: ")
-                self.menu(user_input)
+                self.state = Game.GAME_NOT_FINISHED
+                self.menu(input("Input command: "))
         else:
             self.menu(input("Input command: "))
 
