@@ -180,33 +180,36 @@ class Game:
         elif self.game_state(board) == Game.O_WINS:
             return 1 if ai_mark == 'O' else -1
 
+        def reverse_mark(ai_mark):
+            return "X" if ai_mark == "O" else "O"
+
         scores = []
         board_list = [cell for row in board for cell in row]
         empty_cells_index = [i for i in range(len(board_list)) if board_list[i] == Game.EMPTY_CELL]
         for index in empty_cells_index:
             board[index // 3][index % 3] = ai_mark
-            scores.append(self.minimax(not is_ai_turn, ai_mark, board))
+            scores.append(self.minimax(not is_ai_turn, reverse_mark(ai_mark), board))
             board[index // 3][index % 3] = Game.EMPTY_CELL
         return max(scores) if is_ai_turn else min(scores)
 
 
     def hard_move(self):
         best_score = -math.inf
-        best_move = None
+        best_index = None
 
         board_list = [cell for row in self.board for cell in row]
         empty_cells_index = [i for i in range(len(board_list)) if board_list[i] == Game.EMPTY_CELL]
         for index in empty_cells_index:
             self.board[index // 3][index % 3] = self.active_move()
-            score = self.minimax(False, self.active_move(), self.board)
+            score = self.minimax(False, self.opponent_move(), self.board)
             self.board[index // 3][index % 3] = Game.EMPTY_CELL
             if score > best_score:
                 best_score = score
-                best_move = index
-        self.board[best_move // 3][best_move % 3] = self.active_move()
+                best_index = index
+        self.board[best_index // 3][best_index % 3] = self.active_move()
 
 
-    # determine next player and initiate move
+    # determine next player level and initiate move
     def next_move(self, level):
         if level == Game.USER:
             self.user_move()
